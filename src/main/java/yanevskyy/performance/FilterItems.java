@@ -89,7 +89,7 @@ public class FilterItems extends ReadWrite implements Task {
 
     /**
      * Склоняет отображаемую итоговую фразу в зависимости от последней цифры.
-     * @param countF сок-во найденіх заявок.
+     * @param countF кол-во найденых заявок.
      * @return сформированная строка
      */
     public String endNumber(int countF) {
