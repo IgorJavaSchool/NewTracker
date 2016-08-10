@@ -52,6 +52,10 @@ public class Item extends ReadWrite {
         this.discription = discription;
     }
 
+    public void setListComment(Comment[] listComment) {
+        this.listComment = listComment;
+    }
+
     /**
      * Генерирует дату
      * @return возвращает в указаном формате.
@@ -65,18 +69,4 @@ public class Item extends ReadWrite {
         return listComment;
     }
 
-    /**
-     * Добавляет новый комментарий в передаваемую заявку,
-     * изменяет список комментариев переданной заявки.
-     * @param item передаваемая заявка
-     * @param comment комментарий для добавления
-     */
-    public void addComments(Item item, String comment){
-        Comment[] comentsNew = new Comment[item.listComment.length + 1];
-        for (int i = 0; i < item.listComment.length; i++) {
-            comentsNew[i] = new Comment(item.listComment[i].getCommentMessage());
-        }
-        comentsNew[item.listComment.length] = new Comment(comment);
-        item.listComment = comentsNew;
-    }
 }

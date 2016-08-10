@@ -26,7 +26,7 @@ public class AddComment extends ReadWrite implements Task {
         do {
             writeMessage("Укажите свой комментарий");
             comment = readMessage();
-            boardItems.items[itemId].addComments(boardItems.items[itemId], comment);
+            addComments(boardItems.items[itemId], comment);
         } while (askAddComment());
     }
 
@@ -45,5 +45,20 @@ public class AddComment extends ReadWrite implements Task {
                 default:
             }
         }
+    }
+
+    /**
+     * Добавляет новый комментарий в передаваемую заявку,
+     * изменяет список комментариев переданной заявки.
+     * @param item передаваемая заявка
+     * @param comment комментарий для добавления
+     */
+    public void addComments(Item item, String comment){
+        Comment[] comentsNew = new Comment[item.getListComment().length + 1];
+        for (int i = 0; i < item.getListComment().length; i++) {
+            comentsNew[i] = new Comment(item.getListComment()[i].getCommentMessage());
+        }
+        comentsNew[item.getListComment().length] = new Comment(comment);
+        item.setListComment(comentsNew);
     }
 }
